@@ -7,3 +7,17 @@ Then i will use React
 Then i will use the JavaScript
 Then for now i will not use rolldown-vite
 Then i will install npm and start
+
+-- Well done now we will start on setting up back frontEnd
+
+First i will stop the npm if it is running jus press ctrl + c on terminal to stop it
+
+Then go to the backend folder by typing -cd backend
+Then we will install mongo db by typing - npm install mongodb
+Then after installing the mongodb go to the mongodb site inorder to create the connect.js
+Then create a .env file to store password but first type - npm install dotenv  
+Then create a config.env file inside of backend folder 
+Then copy the in the connect.js with a variable name uri put it in the config.env file
+Then in the config.env put the value of the uri in a variable name ATLAS_URI and remove the "" in the password
+Then replace the <password> with your actual password
+Then in the const client replace the uri variable with process.env.ATLAS_URI
