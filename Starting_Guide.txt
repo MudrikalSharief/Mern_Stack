@@ -21,3 +21,5 @@ Then copy the in the connect.js with a variable name uri put it in the config.en
 Then in the config.env put the value of the uri in a variable name ATLAS_URI and remove the "" in the password
 Then replace the <password> with your actual password
 Then in the const client replace the uri variable with process.env.ATLAS_URI
+
+Also install 'npm install express cors' inside of backend folder
