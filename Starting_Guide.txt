@@ -1,0 +1,9 @@
+First of all i created a vite by typing in terminal
+- npm create vite@latest
+
+Then proceed by typing y
+Then i name my project frontEnd
+Then i will use React
+Then i will use the JavaScript
+Then for now i will not use rolldown-vite
+Then i will install npm and start
