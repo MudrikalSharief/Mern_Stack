@@ -15,7 +15,7 @@ postRoutes.route("/posts").get(async (request, response) => {
         
         if(posts.length > 0){ // check if there are any posts
             response.json(posts) // send the posts as a JSON response
-            console.log(posts);
+            //console.log(posts);
         }else{ // if no posts found, throw an 
             console.log(posts);
             console.log(posts.length);
@@ -60,7 +60,7 @@ postRoutes.route("/posts/:id").get(async (request, response) => {
 })
 
 // 3. Route to create one post 
-postRoutes.route("/posts/create").get(async (request, response) => {
+postRoutes.route("/posts/create").post(async (request, response) => {
     let db = database.getDb() // get the database object
     let mongoObject = {
         title: request.body.title,
