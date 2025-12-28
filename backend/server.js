@@ -1,12 +1,14 @@
 const connect = require("./connect")
 const express = require("express")
 const cors = require("cors")
+const postRoutes = require("./postRoutes") // Import the postRoutes module
 
 const app = express()
 const PORT = 3000
 
 app.use(cors())
 app.use(express.json())
+app.use(postRoutes)
 
 app.listen(PORT, () => {
     connect.connectToServer()
