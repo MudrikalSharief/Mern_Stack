@@ -1,20 +1,20 @@
 import { useState, useEffect } from 'react'
-import axios from "axios"
+import {getAllPosts, getOnePost, createPost, editPost, deletePost} from './api.js'
 import './App.css'
 
 function App() {
-  const [data, setData] = useState()
+  const [posts, setPosts] = useState()
 
-  function createPost(){
+  function generatePost(){
     let postData = {
-      title:"This is from frontend",
-      description:"this is added though fronend amazung",
-      content:"Thesrno content nuyenye",
-      author:"Bombom",
+      title:"This is from frontend testing 3",
+      description:"This is testing 3 hehe",
+      content:"Walay pa awda content",
+      author:"bom bom  awdw pogi",
       dateCreated: new Date()
     }
 
-    axios.post("http://localhost:3000/posts/create", postData)
+    createPost(postData)
     .then((response) => {
       console.log("Post created successfully:", response.data);
     })
@@ -25,24 +25,25 @@ function App() {
 
   /*
   useEffect(() => {
-    async function grabData(){
-      const response = await axios.get("http://localhost:3000/posts/694e596025609f0b40f603b6")
-      if(response.status === 200){
-        setData(response.data)
-        console.log(response.data);
+    async function fetchPosts(){
+
+      let posts = await getAllPosts() //fetch all posts from backend in api.js
+
+      if (posts){
+        setPosts(posts)
       }else{
-        console.error("Error fetching data:", response.status);
+        throw new Error("Error fetching posts")
       }
+      
     }
-    
-    grabData()
+ 
+    fetchPosts()
   }, [])
   */
 
   return (
     <>
-      
-      <button onClick={createPost}>Create Post Now </button>
+        <button onClick={generatePost}>Create Post</button>
     </>
   )
 }

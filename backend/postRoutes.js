@@ -12,14 +12,13 @@ postRoutes.route("/posts").get(async (request, response) => {
         let db = database.getDb() // get the database object
         let posts = await db.collection("posts").find({}).toArray() // fetch all posts from the "posts" collection
         
-        
         if(posts.length > 0){ // check if there are any posts
             response.json(posts) // send the posts as a JSON response
             //console.log(posts);
         }else{ // if no posts found, throw an 
-            console.log(posts);
-            console.log(posts.length);
-            console.log(db.databaseName);
+            // console.log(posts);
+            // console.log(posts.length);
+            // console.log(db.databaseName);
             return response.status(404).json({
                 message: "No posts found in database"
             })
@@ -28,7 +27,7 @@ postRoutes.route("/posts").get(async (request, response) => {
     } catch(error){
         console.error("Error fetching posts:", error)
         return response.status(500).json({
-            message: "Internal server error"
+            message: "Internal server error, Please Check if the current Ip is whitelisted in MongoDB Atlas"
         })
     }
     
