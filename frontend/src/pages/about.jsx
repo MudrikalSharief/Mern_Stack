@@ -1,4 +1,5 @@
 
+
 export function About() {
     return (
         <>  
@@ -6,3 +7,5 @@ export function About() {
         </>
     )
 }
+
+export default About;

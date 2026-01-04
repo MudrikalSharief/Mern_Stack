@@ -7,3 +7,5 @@ export function ReadBlog() {
         </>
     )
 }
+
+export default ReadBlog;
