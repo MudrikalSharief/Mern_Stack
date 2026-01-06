@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 export function BlogPostCard({post}) {
     let date = new Date(post.dateCreated);
@@ -5,12 +6,13 @@ export function BlogPostCard({post}) {
     stringDate = stringDate.slice(4, 15);
 
     return(
-        <div className="post">
+        
+        <Link to={`/readblog/${post._id}`} key={post._id} className="post">
             <h1>{post.title}</h1>
             <h3>{post.author}</h3>
             <h4>{stringDate}</h4>
             {/* <p>{post.description}</p> */}
-        </div>
+        </Link>
     )
 }
 

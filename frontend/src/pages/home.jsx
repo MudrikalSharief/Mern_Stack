@@ -1,6 +1,7 @@
 import { getAllPosts }   from "../api"; 
 import { useEffect, useState } from "react"; // to manage state and lifecycle methods
 import { BlogPostCard } from "../components/blogpostcard"; // import the BlogPostComponent to display each post
+
 export function Home() {
 
     const [posts, setPosts] = useState([]); // state to hold the list of posts

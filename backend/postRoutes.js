@@ -64,7 +64,6 @@ postRoutes.route("/posts/create").post(async (request, response) => {
     let mongoObject = {
         title: request.body.title,
         description: request.body.description,
-        content: request.body.content,
         author: request.body.author,
         dateCreated: request.body.dateCreated
     }
@@ -80,7 +79,6 @@ postRoutes.route("/posts/update/:id").put(async (request, response) => { // chan
         $set: { // use $set operator to update only specified fields
             title: request.body.title,
             description: request.body.description,
-            content: request.body.content,
             author: request.body.author,
             dateCreated: request.body.dateCreated
         }
