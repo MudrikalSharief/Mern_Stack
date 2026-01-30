@@ -2,10 +2,10 @@ import axios from 'axios';
 
 const URL = "http://localhost:3000"
 
-export async function getAllPosts(){
+export async function getServices(){
     //remember if we use async we can unlock the wait keyword, 
     // this keyword will pause the execution until we get
-    const response = await axios.get(`${URL}/posts`)
+    const response = await axios.get(`${URL}/services`)
 
     if(response.status === 200){
         return response.data

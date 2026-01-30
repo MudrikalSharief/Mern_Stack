@@ -10,17 +10,17 @@ export const navbarData = [
     },
     {   
         id: 3,
-        name: "Profile",
+        name: "Services",
         path: "/profile"
     },
     {   
         id: 4,
-        name: "About us",
+        name: "Inventory",
         path: "/about"
     },
     {   
         id: 5,
-        name: "Contact",
+        name: "Logout",
         path: "/contact"
     }
 ]

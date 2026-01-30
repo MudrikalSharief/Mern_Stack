@@ -1,29 +1,30 @@
+const mysql = require('mysql2/promise')
+require('dotenv').config({ path: "./config.env" })
 
-const { MongoClient, ServerApiVersion } = require('mongodb');
-require('dotenv').config({path: "./config.env"})
-
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(process.env.ATLAS_URI, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  }
-});
-
-
-let database 
-
+let pool
 
 module.exports = {
-  //this function will connect to the mongodb server and select the database name blogData
   connectToServer: async () => {
-    await client.connect() // connect to the MongoDB server
-    database = client.db("blogData")
-    console.log("MongoDB connected");
+    pool = mysql.createPool({
+      host: process.env.MYSQL_HOST || 'localhost',
+      user: process.env.MYSQL_USER,
+      password: process.env.MYSQL_PASSWORD,
+      database: process.env.MYSQL_DATABASE,
+      waitForConnections: true,
+      connectionLimit: 10,
+      queueLimit: 0
+    })
+    // test connection
+    const conn = await pool.getConnection()
+    conn.release()
+    console.log("MySQL connected")
   },
-  //this function will fetch the database object from the database
-  getDb: () => {
-    return database
-  }
+
+  // Use this to run queries: SELECT returns rows array; INSERT/UPDATE/DELETE return result packet
+  query: async (sql, params = []) => {
+    const [result] = await pool.execute(sql, params)
+    return result
+  },
+
+  getPool: () => pool
 }
