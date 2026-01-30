@@ -2,7 +2,7 @@ import { getServices }   from "../api";
 import { useEffect, useState } from "react"; // to manage state and lifecycle methods
 import { ServiceCard } from "../components/blogpostcard"; // import the BlogPostComponent to display each post
 
-export function Home() {
+export function Dashboard() {
 
     const [service, setService] = useState([]); // state to hold the list of posts
 
@@ -17,7 +17,7 @@ export function Home() {
     }, [])
 
     return (
-        <div className="posts_container">  
+        <div className="page_container">  
             {service.map((eachservice) =>{
                 return(
                     <ServiceCard post={eachservice}  key={eachservice.service_id}/>
@@ -27,4 +27,4 @@ export function Home() {
     )
 }
 
-export default Home;
+export default Dashboard;

@@ -1,26 +1,26 @@
 export const navbarData = [
     {   id: 1,
-        name: "Home",
-        path: "/home"
+        name: "Dashboard",
+        path: "/dashboard"
     },
-    {
-        id: 2,
-        name: "Create Blog",
-        path: "/createblog"
-    },
+    // {
+    //     id: 2,
+    //     name: "Create Blog",
+    //     path: "/createblog"
+    // },
     {   
         id: 3,
         name: "Services",
-        path: "/profile"
+        path: "/services"
     },
     {   
         id: 4,
         name: "Inventory",
-        path: "/about"
+        path: "/inventory"
     },
-    {   
-        id: 5,
-        name: "Logout",
-        path: "/contact"
-    }
+    // {   
+    //     id: 5,
+    //     name: "Logout",
+    //     path: "/contact"
+    // }
 ]

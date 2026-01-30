@@ -1,10 +1,10 @@
 import {HashRouter, Routes, Route} from "react-router-dom"
-import About from './pages/about'
+import Inventory from './pages/inventory'
 import Contact from './pages/contact'
 import CreateBlog from './pages/createBlog'
-import Home from './pages/home'
+import Dashboard from './pages/dashboard'
 import Landing from './pages/landing'
-import Profile from './pages/profile'
+import Services from './pages/services'
 import ReadBlog from './pages/readBlog'
 
 import Navbar from './components/navbar'
@@ -31,11 +31,11 @@ function App() {
         <Route path="/" element={<Landing/>} /> 
 
         <Route element={<Layout/>}>
-          <Route path="/home" element={<Home/>} />
+          <Route path="/Dashboard" element={<Dashboard/>} />
           <Route path="/readblog/:id" element={<ReadBlog/>} />
           <Route path="/createblog" element={<CreateBlog/>} />
-          <Route path="/profile" element={<Profile/>} />
-          <Route path="/about" element={<About/>} />
+          <Route path="/services" element={<Services/>} />
+          <Route path="/inventory" element={<Inventory/>} />
           <Route path="/contact" element={<Contact/>} />
         </Route>
         
