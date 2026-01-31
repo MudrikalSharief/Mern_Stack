@@ -18,11 +18,82 @@ export function Dashboard() {
 
     return (
         <div className="page_container">  
-            {service.map((eachservice) =>{
-                return(
-                    <ServiceCard post={eachservice}  key={eachservice.service_id}/>
-                )
-            })}
+            <div>
+                <div className="page_title">Dashboard</div>
+                <div className="page_subtitle">Overview of Services and Inventory status</div>
+            </div>
+
+            <div className="metric_holder">
+                <div className="metric">
+                    <div className="metric_info">
+                        <p className="metric_name">Total Services</p>
+                        <p className="metric_value">0</p>
+                    </div>
+                    <div className="metric_icon_holder">
+                        <span className="material-symbols-outlined metric_icon">
+                            icon
+                        </span>
+                    </div>
+                </div>
+
+                <div className="metric">
+                    <div className="metric_info">
+                        <p className="metric_name">Pending</p>
+                        <p className="metric_value">0</p>
+                    </div>
+                    <div className="metric_icon_holder">
+                        <span className="material-symbols-outlined metric_icon">
+                            icon
+                        </span>
+                    </div>
+                </div>
+                <div className="metric">
+                    <div className="metric_info">
+                        <p className="metric_name">In Progress</p>
+                        <p className="metric_value">0</p>
+                    </div>
+                    <div className="metric_icon_holder">
+                        <span className="material-symbols-outlined metric_icon">
+                            icon
+                        </span>
+                    </div>
+                </div>
+                <div className="metric">
+                    <div className="metric_info">
+                        <p className="metric_name">Completed</p>
+                        <p className="metric_value">0</p>
+                    </div>
+                    <div className="metric_icon_holder">
+                        <span className="material-symbols-outlined metric_icon">
+                            icon
+                        </span>
+                    </div>
+                </div>
+                <div className="metric">
+                    <div className="metric_info">
+                        <p className="metric_name">Inventory Items</p>
+                        <p className="metric_value">0</p>
+                    </div>
+                    <div className="metric_icon_holder">
+                        <span className="material-symbols-outlined metric_icon">
+                            icon
+                        </span>
+                    </div>
+                </div>
+                <div className="metric">
+                    <div className="metric_info">
+                        <p className="metric_name">Low Stock</p>
+                        <p className="metric_value">0</p>
+                    </div>
+                    <div className="metric_icon_holder">
+                        <span className="material-symbols-outlined metric_icon">
+                            icon
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+            
         </div>
     )
 }
