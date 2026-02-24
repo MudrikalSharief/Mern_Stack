@@ -28,10 +28,11 @@ export function Services() {
                 </div>
 
                 <div className="page_body">
+                    
                     <div className="search_bar_container">
                         <div className="search_bar_and_logo_holder">
                             <input className="search_bar" type="text" placeholder="Search Services..." />
-                        </div>
+                        </div>x
                     </div>
 
                     <div className="table_holder">
@@ -58,7 +59,7 @@ export function Services() {
                                     <td>Pending</td>
                                     <td>Jan 12, 2026</td>
                                     <td>
-                                        <select class="status-dropdown">
+                                        <select className="status-dropdown">
                                             <option>Available</option>
                                             <option>Out of Stock</option>
                                             <option>Discontinued</option>
@@ -74,7 +75,7 @@ export function Services() {
                                     <td>Pending</td>
                                     <td>Jan 15 2026</td>
                                     <td>
-                                        <select class="status-dropdown">
+                                        <select className="status-dropdown">
                                             <option>Available</option>
                                             <option>Out of Stock</option>
                                             <option>Discontinued</option>
@@ -90,7 +91,7 @@ export function Services() {
                                     <td>Pending</td>
                                     <td>Jan 12 2026</td>
                                     <td>
-                                        <select class="status-dropdown">
+                                        <select className="status-dropdown">
                                             <option>Available</option>
                                             <option>Out of Stock</option>
                                             <option>Discontinued</option>

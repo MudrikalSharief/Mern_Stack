@@ -14,6 +14,16 @@ export async function getServices(){
     }
 }
 
+export async function getInventory(){
+    const response = await axios.get(`${URL}/getInventory`)
+
+    if(response.status === 200){
+        return response.data
+    } else {
+        throw new Error("Error fetching inventory")
+    }
+}
+
 export async function getOnePost(id){
 
     const response = await axios.get(`${URL}/posts/${id}`)

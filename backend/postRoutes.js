@@ -44,6 +44,27 @@ postRoutes.route("/services").get(async (req, res) => {
   }
 })
 
+postRoutes.route("/getInventory").get(async (req, res) => {
+  try {
+    const rows = await database.query(
+        `SELECT p.pid, p.pname, p.base_price, p.selling_price, p.quantity, c.name AS category, s.supplier_name AS supplier
+        FROM product p
+        JOIN category c
+          ON p.categoryid = c.categoryid
+        JOIN supplier s
+          ON p.supplier = s.supplier_id;`
+      )
+
+    if (rows.length > 0) return res.json(rows)
+    return res.status(404).json({ message: "No Inventory found in database" })
+
+  } catch (err) {
+    console.error(err)
+    return res.status(500).json({ message: "Internal server error in fetching inventory" })
+  }
+})
+
+
 postRoutes.route("/posts/:id").get(async (req, res) => {
   try {
     const rows = await database.query('SELECT * FROM posts WHERE id = ?', [req.params.id])

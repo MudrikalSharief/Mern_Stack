@@ -230,7 +230,11 @@ table{
     font-weight: 600;
 }
 
-.inventory_table td, .inventory_table th{
+.inventory_table td {
+    text-align: left;
+    padding: 4px 8px;
+}
+.inventory_table th{
     text-align: left;
     padding: 10px;
 }
@@ -281,3 +285,8 @@ table{
     outline: none;
     box-shadow: none;
 }
+
+.status { padding: 4px 8px; border-radius: 4px; text-align:center; font-weight:600; }
+.status.in-stock { background:#d1fae5; color:#065f46; }
+.status.low-stock { background:#fff7ed; color:#92400e; }
+.status.out-stock { background:#fee2e2; color:#991b1b; }
