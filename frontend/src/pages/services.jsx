@@ -17,11 +17,98 @@ export function Services() {
     return (
         
             <div className="page_container">
-                {services.map((eachservice) => {
+                <div className="page_header">
+                    <div>
+                        <div className="page_title">Services</div>
+                        <div className="page_subtitle">Manage phone services</div>
+                    </div>
+                    <div>
+                        <button className="add_button">Add Service</button>
+                    </div>
+                </div>
+
+                <div className="page_body">
+                    <div className="search_bar_container">
+                        <div className="search_bar_and_logo_holder">
+                            <input className="search_bar" type="text" placeholder="Search Services..." />
+                        </div>
+                    </div>
+
+                    <div className="table_holder">
+                        <table className="inventory_table">
+                            <thead>
+                                <tr>
+                                    <th>Customer</th>
+                                    <th>Contact</th>
+                                    <th>Phone Model</th>
+                                    <th>Service</th>
+                                    <th>Cost</th>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Custmer una</td>
+                                    <td>09090909090</td>
+                                    <td>Poco 1d</td>
+                                    <td>LCD</td>
+                                    <td>294</td>
+                                    <td>Pending</td>
+                                    <td>Jan 12, 2026</td>
+                                    <td>
+                                        <select class="status-dropdown">
+                                            <option>Available</option>
+                                            <option>Out of Stock</option>
+                                            <option>Discontinued</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>awkjdka una</td>
+                                    <td>090902323290</td>
+                                    <td>Oppo 2ws</td>
+                                    <td>Battery</td>
+                                    <td>2234</td>
+                                    <td>Pending</td>
+                                    <td>Jan 15 2026</td>
+                                    <td>
+                                        <select class="status-dropdown">
+                                            <option>Available</option>
+                                            <option>Out of Stock</option>
+                                            <option>Discontinued</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>lnkfgb</td>
+                                    <td>0909454645</td>
+                                    <td>Realme a13</td>
+                                    <td>Charging Pin</td>
+                                    <td>134</td>
+                                    <td>Pending</td>
+                                    <td>Jan 12 2026</td>
+                                    <td>
+                                        <select class="status-dropdown">
+                                            <option>Available</option>
+                                            <option>Out of Stock</option>
+                                            <option>Discontinued</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+
+                {/* {services.map((eachservice) => {
                     return(
                         <ServiceCard key={eachservice.service_id} post={eachservice} />
                     )
-                })}
+                })} */}
             </div>
         
     )
