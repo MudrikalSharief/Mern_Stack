@@ -290,3 +290,14 @@ table{
 .status.in-stock { background:#d1fae5; color:#065f46; }
 .status.low-stock { background:#fff7ed; color:#92400e; }
 .status.out-stock { background:#fee2e2; color:#991b1b; }
+
+
+.add_modal_holder{
+  position:absolute;
+  background-color: #065f46;
+}
+
+.add_modal_holder form{
+  display: flex;
+  flex-direction:column;
+}

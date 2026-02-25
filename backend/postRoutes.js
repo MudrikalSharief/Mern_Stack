@@ -55,7 +55,9 @@ postRoutes.route("/getInventory").get(async (req, res) => {
           ON p.supplier = s.supplier_id;`
       )
 
-    if (rows.length > 0) return res.json(rows)
+    if (rows.length > 0) 
+      return res.json(rows)
+
     return res.status(404).json({ message: "No Inventory found in database" })
 
   } catch (err) {
@@ -64,6 +66,52 @@ postRoutes.route("/getInventory").get(async (req, res) => {
   }
 })
 
+postRoutes.route("/getCategory").get(async (req, res) => {
+  try{
+
+    const rows = await database.query(
+      `SELECT categoryid, name
+       FROM category;`
+    )
+
+    if(rows.length > 0 )
+      return res.json(rows)
+
+    return res.status(404).json({ message: "No category found in Database"})
+
+  }catch(err){
+      console.error("Getting Category failed : ", err);
+        // ERROR RESPONSE
+        res.status(500).json({
+          message: "Failed to get category"
+        });
+  }
+})
+
+
+postRoutes.route("/getSupplier").get(async (req, res) => {
+  try{
+
+    const rows = await database.query(
+      `SELECT supplier_id, supplier_name
+       FROM supplier;`
+    )
+
+    if(rows.length > 0 )
+      return res.json(rows)
+
+    return res.status(404).json({ message: "No supplier found in Database"})
+    
+  }catch(err){
+      console.error("Getting suppliers failed : ", err);
+        // ERROR RESPONSE
+        res.status(500).json({
+          message: "Failed to get supplier"
+        });
+  }
+})
+
+//=============================
 
 postRoutes.route("/posts/:id").get(async (req, res) => {
   try {
@@ -115,13 +163,31 @@ postRoutes.route("/posts/:id").get(async (req, res) => {
 //     response.json(posts) // send the inserted post as a JSON response
 // })
 
-postRoutes.route("/posts/create").post(async (req, res) => {
-  const { title, description, author, dateCreated } = req.body
-  const result = await database.query(
-    'INSERT INTO posts (title, description, author, dateCreated) VALUES (?, ?, ?, ?)',
-    [title, description, author, dateCreated]
-  )
-  return res.json({ insertId: result.insertId })
+postRoutes.route("/products/create").post(async (req, res) =>{
+  try {
+    const { name, brandid, category, base_price,	selling_price, quantity, supplier	} = req.body
+  
+    const result = await database.query(
+      `INSERT INTO product (pname, brandid, categoryid, base_price, selling_price, quantity, supplier) 
+      VALUES (?, ?, ?, ?, ?, ?, ?)`,
+      [name, brandid, category, base_price,	selling_price, quantity, supplier]
+  
+    )
+
+    // SUCCESS RESPONSE
+    res.status(201).json({
+      message: "Product created successfully",
+      productId: result.insertId
+    });
+
+  }catch(err){
+    console.error("Creating Product failed : ", err);
+    // ERROR RESPONSE
+    res.status(500).json({
+      message: "Failed to create product"
+    });
+  }
+
 })
 
 // 4. Route to Update one post 

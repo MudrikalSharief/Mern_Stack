@@ -83,8 +83,33 @@ export function Inventory() {
                             
                         </tbody>
                     </table>
-
                 </div>
+
+                <div className="add_modal_holder">
+                    <div>
+                        <form action="">
+                            <label htmlFor="name">Product Name</label>
+                            <input name="name" type="text" />
+
+                            <label htmlFor="name">Product Name</label>
+                            <input name="name" type="text" />
+
+                            <label htmlFor="name">Product Name</label>
+                            <input name="name" type="text" />
+
+                            <label htmlFor="name">Product Name</label>
+                            <input name="name" type="text" />
+
+                            <label htmlFor="name">Product Name</label>
+                            <input name="name" type="text" />
+
+                            <label htmlFor="name">Product Name</label>
+                            <input name="name" type="text" />
+                            
+                        </form>
+                    </div>
+                </div>
+
             </div>  
            
         </div>

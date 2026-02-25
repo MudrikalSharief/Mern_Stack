@@ -24,6 +24,8 @@ export async function getInventory(){
     }
 }
 
+
+//=========================
 export async function getOnePost(id){
 
     const response = await axios.get(`${URL}/posts/${id}`)
