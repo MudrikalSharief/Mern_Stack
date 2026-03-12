@@ -7,7 +7,6 @@ import Landing from './pages/landing'
 import Services from './pages/services'
 import ReadBlog from './pages/readBlog'
 
-import Navbar from './components/navbar'
 import Layout from './components/layout'
 
 import './App.css'

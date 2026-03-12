@@ -1,22 +1,19 @@
-import { Link } from "react-router-dom"
-import { navbarData } from "./navbardata" // import the navbar data from navbardata.js
-
-export function Navbar() {
+export function Navbar({ isSidebarOpen, onToggleSidebar }) {
     return (
         <div className='navbar'>
-            <div className = 'navlogo'>
-                <p>LogoHere</p>
-            </div>
-            <div className="navbar_right">
-                {
-                    navbarData.map((page) => { // map through the navbar data to create links   
-                        return (
-                            <Link to={page.path} key={page.id} className='navlink'>
-                                <button>{page.name}</button>
-                            </Link>
-                        )
-                    })
-                }
+            <div className='navbar_left'>
+                <button
+                    className="sidebar_toggle"
+                    onClick={onToggleSidebar}
+                    aria-label={isSidebarOpen ? "Close navigation menu" : "Open navigation menu"}
+                >
+                    {isSidebarOpen ? "✕" : "☰"}
+                </button>
+                {!isSidebarOpen && (
+                    <div className='navlogo'>
+                        <p>LogoHere</p>
+                    </div>
+                )}
             </div>
         </div>
         

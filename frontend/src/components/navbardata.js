@@ -1,7 +1,10 @@
+import { LuLayoutDashboard, LuWrench, LuPackage } from "react-icons/lu"
+
 export const navbarData = [
     {   id: 1,
         name: "Dashboard",
-        path: "/dashboard"
+        path: "/dashboard",
+        icon: LuLayoutDashboard
     },
     // {
     //     id: 2,
@@ -11,12 +14,14 @@ export const navbarData = [
     {   
         id: 3,
         name: "Services",
-        path: "/services"
+        path: "/services",
+        icon: LuWrench
     },
     {   
         id: 4,
         name: "Inventory",
-        path: "/inventory"
+        path: "/inventory",
+        icon: LuPackage
     },
     // {   
     //     id: 5,

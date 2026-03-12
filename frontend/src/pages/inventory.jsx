@@ -1,9 +1,11 @@
 import { getInventory } from "../api";
+import AddProductModal from "../components/modalAddProduct";
 import { useState, useEffect } from "react";
 
 export function Inventory() {
 
     const [inventory, setInventory] = useState([]);
+    const [add_modal, set_add_modal] = useState(false);
 
     useEffect(() => {
         async function fetchInventory(){
@@ -34,7 +36,12 @@ export function Inventory() {
                     <div className="page_subtitle">This is where inventory details will be displayed.</div>
                 </div>
                 <div>
-                    <button className="add_button">Add Item</button>
+                    <button className="add_button" onClick={() => set_add_modal(true)}>Add Item</button>
+
+                    <AddProductModal 
+                        isOpen={add_modal}
+                        onClose={() => set_add_modal(false)}
+                    />
                 </div>
             </div>
 
@@ -85,7 +92,7 @@ export function Inventory() {
                     </table>
                 </div>
 
-                <div className="add_modal_holder">
+                {/* <div className="add_modal_holder">
                     <div>
                         <form action="">
                             <label htmlFor="name">Product Name</label>
@@ -108,7 +115,7 @@ export function Inventory() {
                             
                         </form>
                     </div>
-                </div>
+                </div> */}
 
             </div>  
            
