@@ -6,7 +6,7 @@ import { useState } from "react"
 export function Layout() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false)
 
-    const toggleSidebar = () => {
+    const toggleSidebar = () => { 
         setIsSidebarOpen((prev) => !prev)
     }
 

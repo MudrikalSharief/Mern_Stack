@@ -88,6 +88,28 @@ postRoutes.route("/getCategory").get(async (req, res) => {
   }
 })
 
+postRoutes.route("/getBrand").get(async (req, res) => {
+  try{
+
+    const rows = await database.query(
+      `SELECT id, bname
+       FROM brand;`
+    )
+
+    if(rows.length > 0 )
+      return res.json(rows)
+
+    return res.status(404).json({ message: "No brand found in Database"})
+
+  }catch(err){
+      console.error("Getting brand failed : ", err);
+        // ERROR RESPONSE
+        res.status(500).json({
+          message: "Failed to get brand"
+        });
+  }
+})
+
 
 postRoutes.route("/getSupplier").get(async (req, res) => {
   try{

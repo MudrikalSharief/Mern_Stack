@@ -23,6 +23,28 @@ export async function getInventory(){
         throw new Error("Error fetching inventory")
     }
 }
+export async function getCategory(){
+    const response = await axios.get(`${URL}/getCategory`)
+
+    if(response.status == 200){
+        return response.data
+    }else{
+        throw new Error("Error in Fetching Category")
+    }
+}
+
+export async function getBrand(){
+    const response = await axios.get(`${URL}/getBrand`)
+
+    if(response.status == 200){
+        return response.data
+    }else{
+        throw new Error("Error in Fetching Brands")
+    }
+}
+
+
+
 
 
 //=========================

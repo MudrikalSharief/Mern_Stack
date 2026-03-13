@@ -1,4 +1,4 @@
-import { getInventory } from "../api";
+import { getInventory, getCategory, getBrand } from "../api";
 import AddProductModal from "../components/modalAddProduct";
 import { useState, useEffect } from "react";
 
@@ -6,6 +6,8 @@ export function Inventory() {
 
     const [inventory, setInventory] = useState([]);
     const [add_modal, set_add_modal] = useState(false);
+    const [category, setCategory] = useState([]);
+    const [brand, setBrand] = useState([]);
 
     useEffect(() => {
         async function fetchInventory(){
@@ -14,6 +16,24 @@ export function Inventory() {
         }
 
         fetchInventory();
+    }, [])
+
+    useEffect(() => {
+        async function fetchCategory(){
+            const category = await getCategory();
+            setCategory(category);
+        }
+
+        fetchCategory();
+    }, [])
+
+    useEffect(() => {
+        async function fetchBrand(){
+            const brand = await getBrand();
+            setBrand(brand);
+        }
+
+        fetchBrand();
     }, [])
 
     function status(quantity){
@@ -41,6 +61,8 @@ export function Inventory() {
                     <AddProductModal 
                         isOpen={add_modal}
                         onClose={() => set_add_modal(false)}
+                        categories={category}
+                        brands={brand}
                     />
                 </div>
             </div>
@@ -62,7 +84,6 @@ export function Inventory() {
                                 <th>Selling Price</th>
                                 <th>Quantity</th>
                                 <th>Status</th>
-                                <th>Supllier</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -78,7 +99,6 @@ export function Inventory() {
                                             <td>{item.selling_price}</td>
                                             <td>{item.quantity}</td>
                                             <td className={stockClass(item.quantity)}>{status(item.quantity)}</td>
-                                            <td>{item.supplier}</td>
                                             <td>
                                                 <button>update</button>
                                             </td>
@@ -92,30 +112,6 @@ export function Inventory() {
                     </table>
                 </div>
 
-                {/* <div className="add_modal_holder">
-                    <div>
-                        <form action="">
-                            <label htmlFor="name">Product Name</label>
-                            <input name="name" type="text" />
-
-                            <label htmlFor="name">Product Name</label>
-                            <input name="name" type="text" />
-
-                            <label htmlFor="name">Product Name</label>
-                            <input name="name" type="text" />
-
-                            <label htmlFor="name">Product Name</label>
-                            <input name="name" type="text" />
-
-                            <label htmlFor="name">Product Name</label>
-                            <input name="name" type="text" />
-
-                            <label htmlFor="name">Product Name</label>
-                            <input name="name" type="text" />
-                            
-                        </form>
-                    </div>
-                </div> */}
 
             </div>  
            

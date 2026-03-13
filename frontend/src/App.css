@@ -454,19 +454,125 @@ table{
 .status.out-stock { background:#fee2e2; color:#991b1b; }
 
 
+/* ADD MODAL START */
 .add_modal_holder{
-  position:absolute;
-  background-color: #065f46;
-}
-
-.add_modal_holder form{
+  z-index: 140;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.25);
   display: flex;
-  flex-direction:column;
+  justify-content: center;
+  align-items: center;
 }
 
-.modal{
-  display: block;
-  z-index: 100;
-  
-
+.add_modal {
+  width: 420px;
+  background: #f7f8fa; /* soft white / light gray */
+  border-radius: 12px;
+  padding: 24px;
+  font-family: Inter, sans-serif;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
 }
+
+/* Header */
+.add_modal h2 {
+  margin: 0 0 20px 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #2c2c2c;
+}
+
+/* Labels */
+.add_modal label {
+  text-align: left;
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: #444;
+}
+
+/* Inputs */
+.add_modal input,
+.add_modal select {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #d8dde6;
+  background: #eef1f5;
+  font-size: 14px;
+  outline: none;
+  margin-bottom: 16px;
+  color: #2c2c2c;
+}
+
+.add_modal input:focus,
+.add_modal select:focus {
+  border-color: #2f6fed;
+  background: white;
+}
+
+/* Two column layout (Quantity + Price) */
+.form_row {
+  text-align: left;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+/* Buttons container */
+.modal_buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.red{
+  color: red;
+}
+/* Cancel button */
+.cancel_btn {
+  background: #e6e8ec;
+  color:#374151;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+
+/* Add button */
+.save_btn {
+  background: #2f6fed;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.save_btn:hover {
+  background: #2459c7;
+}
+
+
+@media (max-width:480px) {
+  .add_modal {
+    width: 250px;
+  }
+
+  .form_row {
+    grid-template-columns: 1fr;
+    gap: 0px;
+  }
+
+  .form_row div{
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* ADD MODAL END */
