@@ -1,39 +1,36 @@
 import { getInventory, getCategory, getBrand } from "../api";
 import AddProductModal from "../components/modalAddProduct";
 import { useState, useEffect } from "react";
+import { createProduct } from "../services/productService";
 
 export function Inventory() {
 
     const [inventory, setInventory] = useState([]);
-    const [add_modal, set_add_modal] = useState(false);
+    const [addModal, setAddModal] = useState(false);
     const [category, setCategory] = useState([]);
     const [brand, setBrand] = useState([]);
 
     useEffect(() => {
-        async function fetchInventory(){
-            const inventory = await getInventory();
-            setInventory(inventory);
+        async function fetchData(){
+
+            try{
+                const [inventory,category,brand] = await Promise.all([
+                    getInventory(),
+                    getCategory(),
+                    getBrand()
+                ]);
+
+                setInventory(inventory);
+                setCategory(category);
+                setBrand(brand);
+
+            }catch(error){
+                 console.error("Failed to load data:", error);
+            }
         }
 
-        fetchInventory();
-    }, [])
-
-    useEffect(() => {
-        async function fetchCategory(){
-            const category = await getCategory();
-            setCategory(category);
-        }
-
-        fetchCategory();
-    }, [])
-
-    useEffect(() => {
-        async function fetchBrand(){
-            const brand = await getBrand();
-            setBrand(brand);
-        }
-
-        fetchBrand();
+        fetchData();
+        
     }, [])
 
     function status(quantity){
@@ -48,6 +45,20 @@ export function Inventory() {
         return "status out-stock";
     }
     
+    async function handleAddProduct(productData) {
+        try {
+            const newProduct= await createProduct(productData);
+
+            setInventory((prev) => [...prev, newProduct]);
+
+            // close modal
+            setAddModal(false);
+
+        } catch (error) {
+            console.error("Failed to add product:", error);
+        }
+    }
+
     return (
         <div className="page_container">  
             <div className="page_header">
@@ -56,13 +67,14 @@ export function Inventory() {
                     <div className="page_subtitle">This is where inventory details will be displayed.</div>
                 </div>
                 <div>
-                    <button className="add_button" onClick={() => set_add_modal(true)}>Add Item</button>
+                    <button className="add_button" onClick={() => setAddModal(true)}>Add Item</button>
 
                     <AddProductModal 
-                        isOpen={add_modal}
-                        onClose={() => set_add_modal(false)}
+                        isOpen={addModal}
+                        onClose={() => setAddModal(false)}
                         categories={category}
                         brands={brand}
+                        onSubmit={handleAddProduct}
                     />
                 </div>
             </div>

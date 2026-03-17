@@ -185,26 +185,61 @@ postRoutes.route("/posts/:id").get(async (req, res) => {
 //     response.json(posts) // send the inserted post as a JSON response
 // })
 
-postRoutes.route("/products/create").post(async (req, res) =>{
+postRoutes.post("/products/create", async (req, res) =>{
   try {
-    const { name, brandid, category, base_price,	selling_price, quantity, supplier	} = req.body
-  
+    const { name, 
+            categoryId, 
+            brandId, 
+            basePrice,	
+            sellingPrice, 
+            quantity, 
+          } = req.body
+    
+    // Basic validation
+    if (!name) {
+      return res.status(400).json({
+        message: "Missing name"
+      });
+    }
+    if (!categoryId) {
+      return res.status(400).json({
+        message: "Missing category"
+      });
+    }
+    if (!brandId) {
+      return res.status(400).json({
+        message: "Missing Brand"
+      });
+    }
+    if (!basePrice) {
+      return res.status(400).json({
+        message: "Missing Base price"
+      });
+    }
+    if (!sellingPrice) {
+      return res.status(400).json({
+        message: "Missing Selling Price"
+      });
+    }
+
+
     const result = await database.query(
-      `INSERT INTO product (pname, brandid, categoryid, base_price, selling_price, quantity, supplier) 
-      VALUES (?, ?, ?, ?, ?, ?, ?)`,
-      [name, brandid, category, base_price,	selling_price, quantity, supplier]
+      `INSERT INTO product (pname, brandid, categoryid, base_price, selling_price, quantity) 
+      VALUES (?, ?, ?, ?, ?, ?)`,
+      [name, brandId, categoryId, basePrice,	sellingPrice, quantity]
   
     )
 
     // SUCCESS RESPONSE
     res.status(201).json({
       message: "Product created successfully",
-      productId: result.insertId
+      productId: result.insertId,
+      status:200
     });
 
   }catch(err){
     console.error("Creating Product failed : ", err);
-    // ERROR RESPONSE
+
     res.status(500).json({
       message: "Failed to create product"
     });
