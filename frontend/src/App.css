@@ -533,6 +533,10 @@ table{
 .red{
   color: red;
 }
+
+.green{
+  color: green;
+}
 /* Cancel button */
 .cancel_btn {
   background: #e6e8ec;

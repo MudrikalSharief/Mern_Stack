@@ -47,8 +47,16 @@ export function Inventory() {
     
     async function handleAddProduct(productData) {
         try {
-            const newProduct= await createProduct(productData);
-
+            const response= await createProduct(productData);
+            const newProduct = {
+                pid: response.productId,
+                pname: productData.name,
+                base_price: productData.basePrice,
+                selling_price: productData.sellingPrice,
+                quantity: productData.quantity,
+                category: category.find(c => Number(c.categoryid) === Number(productData.categoryId))?.name || "",
+                brand: brand.find(b => Number(b.id) === Number(productData.brandId))?.bname || ""
+                };
             setInventory((prev) => [...prev, newProduct]);
 
             // close modal
@@ -90,8 +98,9 @@ export function Inventory() {
                     <table className="inventory_table">
                         <thead>
                             <tr>
-                                <th>Item Name</th>
                                 <th>Category</th>
+                                <th>Brand</th>
+                                <th>Item Name</th>
                                 <th>Base Price</th>
                                 <th>Selling Price</th>
                                 <th>Quantity</th>
@@ -105,8 +114,9 @@ export function Inventory() {
                                 ) : (
                                     inventory.map((item) => (
                                         <tr key={item.pid}>
-                                            <td>{item.pname}</td>
                                             <td>{item.category}</td>
+                                            <td>{item.brand}</td>
+                                            <td>{item.pname}</td>
                                             <td>{item.base_price}</td>
                                             <td>{item.selling_price}</td>
                                             <td>{item.quantity}</td>

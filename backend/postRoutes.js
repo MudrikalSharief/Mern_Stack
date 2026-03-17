@@ -47,12 +47,13 @@ postRoutes.route("/services").get(async (req, res) => {
 postRoutes.route("/getInventory").get(async (req, res) => {
   try {
     const rows = await database.query(
-        `SELECT p.pid, p.pname, p.base_price, p.selling_price, p.quantity, c.name AS category, s.supplier_name AS supplier
+        `SELECT p.pid, p.pname, p.base_price, p.selling_price, p.quantity, c.name AS category, b.bname AS brand
         FROM product p
         JOIN category c
           ON p.categoryid = c.categoryid
-        JOIN supplier s
-          ON p.supplier = s.supplier_id;`
+        JOIN brand b
+          ON p.brandid = b.id;  
+        `
       )
 
     if (rows.length > 0) 
@@ -231,10 +232,9 @@ postRoutes.post("/products/create", async (req, res) =>{
     )
 
     // SUCCESS RESPONSE
-    res.status(201).json({
+    res.status(200).json({
       message: "Product created successfully",
-      productId: result.insertId,
-      status:200
+      productId: result.insertId
     });
 
   }catch(err){
